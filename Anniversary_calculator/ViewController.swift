@@ -17,15 +17,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var day300: UILabel!
     @IBOutlet weak var day400: UILabel!
     
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image3: UIImageView!
+    @IBOutlet weak var image4: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dayValueChanged(selectedDay)
+        imageChange(image: image1)
+        imageChange(image: image2)
+        imageChange(image: image3)
+        imageChange(image: image4)
+        dateSetting()
+
         
     }
     
     @IBAction func dayValueChanged(_ sender: UIDatePicker) {
-        // DateFormatter로 형식 정해주기
+        dateSetting()
+        
+    }
+    
+    func imageChange(image: UIImageView) {
+        image.layer.cornerRadius = 10
+    }
+    
+    func dateSetting() {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy년 MM월 d일"
@@ -50,12 +67,7 @@ class ViewController: UIViewController {
         let end400 = start.addingTimeInterval(3600*24*400)
         day400.text = "\(formatter.string(from: end400))"
         
-        
     }
-    
-    func dateAdd() {
-    }
-    
     
 }
 
