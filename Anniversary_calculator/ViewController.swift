@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     // 기념일 정한 날짜 레이블
     @IBOutlet weak var specialDay: UILabel!
     
+    @IBOutlet weak var currentLabel: UILabel!
     // Label 변수 선언
     @IBOutlet weak var day100: UILabel!
     @IBOutlet weak var day200: UILabel!
@@ -54,6 +55,12 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        showAlert("저장 완료")
+
+    }
+    
+    
     func imageChange(image: UIImageView) {
         image.layer.cornerRadius = 10
     }
@@ -74,6 +81,8 @@ class ViewController: UIViewController {
         // start에 Date 인스턴스 찍고 선택한 날짜 정보 저장해주기
         var start = Date()
         start = selectedDay.date
+    
+        currentLabel.text = "\(formatter.string(from: start))"
                 
         // 선택한 날짜 + 100일
         let end100 = start.addingTimeInterval(3600*24*99)
